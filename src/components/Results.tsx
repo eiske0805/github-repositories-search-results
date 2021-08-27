@@ -1,7 +1,16 @@
 import { memo, VFC } from 'react';
 import { ApolloError } from '@apollo/client';
-import { Box, Text, UnorderedList, ListItem, Link } from '@chakra-ui/react';
+import {
+  Box,
+  Text,
+  UnorderedList,
+  ListItem,
+  Link,
+  Stack,
+  HStack,
+} from '@chakra-ui/react';
 
+import { StarButton } from './StarButton';
 import { Data } from '../type/data';
 
 type Props = {
@@ -21,16 +30,21 @@ export const Results: VFC<PartialType> = memo(({ loading, error, data }) => {
       ) : (
         <>
           <UnorderedList mt={{ base: 4, md: 6 }}>
-            {data?.search.edges.map((edge) => (
-              <ListItem
-                key={edge.node.id}
-                fontSize={{ base: 'md', sm: 'lg', md: 'xl' }}
-              >
-                <Link href={edge.node.url} isExternal>
-                  {edge.node.name}
-                </Link>
-              </ListItem>
-            ))}
+            <Stack spacing={{ base: 4, md: 6 }} justify="flex-start">
+              {data?.search.edges.map((edge) => (
+                <ListItem
+                  key={edge.node.id}
+                  fontSize={{ base: 'md', sm: 'lg', md: 'xl' }}
+                >
+                  <HStack>
+                    <Link href={edge.node.url} isExternal>
+                      {edge.node.name}
+                    </Link>
+                    <StarButton node={edge.node} />
+                  </HStack>
+                </ListItem>
+              ))}
+            </Stack>
           </UnorderedList>
         </>
       )}

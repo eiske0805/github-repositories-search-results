@@ -11,7 +11,7 @@ type Props = {
   data: Data;
 };
 
-export const Buttons: VFC<Props> = memo(
+export const PreviousNextButtons: VFC<Props> = memo(
   ({ PER_PAGE, variables, setVariables, data }) => {
     const goPrevious = (startCursor: string) => {
       setVariables({

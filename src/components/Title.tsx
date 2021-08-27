@@ -17,7 +17,7 @@ export const Title: VFC<PartialType> = memo(({ loading, error, data }) => {
   const title = 'GitHub Repositories Seach Results';
 
   return (
-    <Box p={{ base: 4, md: 6 }}>
+    <Box>
       <Heading as="h1" fontSize={{ base: 'lg', sm: 'xl', md: '2xl' }}>
         {title}
         {loading

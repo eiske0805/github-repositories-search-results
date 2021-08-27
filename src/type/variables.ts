@@ -3,5 +3,5 @@ export type Variables = {
   last: number | null;
   before: string | null;
   after: string | null;
-  query: string;
+  query?: string;
 };
